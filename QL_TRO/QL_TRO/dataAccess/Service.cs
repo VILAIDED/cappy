@@ -16,12 +16,12 @@ namespace QL_TRO.dataAccess
 
         // show phòng nào trống phòng nào đang thuê
         string statusRoom = "select  MA_PHONG, case when Trang_thai > 0 then 'dang thue' else 'available' end as Trang_thai from (SELECT distinct p.Ma_PHONG MA_PHONG,(select count(MA_PHONG) from KHACH_THUE where KHACH_THUE.MA_PHONG = p.MA_PHONG ) as Trang_thai"
-                            + "FROM PHONG p full outer JOIN KHACH_THUE ON p.MA_PHONG = KHACH_THUE.MA_PHONG) as Test";
+                            + "FROM PHONG p ) as Test";
 
 
         // hiện lên có bao nhiêu người ở trong  mỗi phòng
         string songuoitrongRoom = "select  MA_PHONG,Trang_thai from(SELECT distinct p.Ma_PHONG MA_PHONG, (select count(MA_PHONG) from KHACH_THUE where KHACH_THUE.MA_PHONG = p.MA_PHONG) as Trang_thai"
-                                  +"FROM PHONG p full outer JOIN KHACH_THUE ON p.MA_PHONG = KHACH_THUE.MA_PHONG) as Test";
+                                  +"FROM PHONG p) as Test";
 
         // show số điện nước dùng trong tháng 
         string dienNuoc = "SELECT PHONG_ID ,SO_DIEN_CU,SO_DIEN_MOI,SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_MOI" +
