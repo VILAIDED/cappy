@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using QL_TRO.dataAccess;
 
 namespace QL_TRO
 {
     public partial class Form1 : Form
     {
-        static string sql_connect = ConfigurationManager.ConnectionStrings["sql_connect"].ConnectionString;
-        SqlConnection con = new SqlConnection(sql_connect);
+      
+        SqlConnection con = new SqlConnection(helper.ConnectString());
         public Form1()
         {
             InitializeComponent();

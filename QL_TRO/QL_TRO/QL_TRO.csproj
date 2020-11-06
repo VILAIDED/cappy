@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataAccess\helper.cs" />
+    <Compile Include="dataAccess\Service.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
