@@ -1,0 +1,10 @@
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\bin\Debug\QL_TRO.exe.config
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\bin\Debug\QL_TRO.exe
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\bin\Debug\QL_TRO.pdb
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.csprojAssemblyReference.cache
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Form1.resources
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Properties.Resources.resources
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.csproj.GenerateResource.cache
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.exe
+C:\Users\ASUS\source\repos\QL_TRO\QL_TRO\obj\Debug\QL_TRO.pdb
