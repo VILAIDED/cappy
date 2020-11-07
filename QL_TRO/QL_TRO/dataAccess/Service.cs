@@ -30,5 +30,23 @@ namespace QL_TRO.dataAccess
                            "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC" +
                           " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0))" +
                           "as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG;";
+
+
+        // số điện số nước dùng , tiền điện tiền nước, tổng tiền
+        string tienDN = "SELECT PHONG_ID ,SO_DIEN_CU,SO_DIEN_MOI,SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,(SO_DIEN_MOI-SO_DIEN_CU) * 2000 as TIEN_DIEN,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_DUNG,"
+                         + "(SO_NUOC_MOI - SO_NUOC_CU) * 5000 as TIEN_NUOC,((SO_NUOC_MOI - SO_NUOC_CU) * 5000) +((SO_DIEN_MOI-SO_DIEN_CU) * 2000) as TONG_TIEN" 
+                         + "FROM(SELECT p.MA_PHONG PHONG_ID, dn.SO_DIEN SO_DIEN_CU, dn.SO_NUOC SO_NUOC_CU" 
+                         +  "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" 
+                         + "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC"
+                         + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
+        // số điện số nước,tổng tiền
+        string tongTien = "SELECT PHONG_ID, SO_DIEN_CU, SO_DIEN_MOI, SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_DUNG,"
+                         + "((SO_NUOC_MOI - SO_NUOC_CU) * 5000) +((SO_DIEN_MOI-SO_DIEN_CU) * 2000) as TONG_TIEN" 
+                         + "FROM(SELECT p.MA_PHONG PHONG_ID, dn.SO_DIEN SO_DIEN_CU, dn.SO_NUOC SO_NUOC_CU" 
+                         +  "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" 
+                         + "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC"
+                         + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
+    
+
     }
 }
