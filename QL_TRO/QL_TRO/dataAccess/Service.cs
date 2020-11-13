@@ -51,6 +51,10 @@ namespace QL_TRO.dataAccess
                          + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
 
         static string testDN = "select * from DIEN_NUOC";
+
+
+
+        // gọi dữ liệu từ CSDL vào linkedlist
         public static TestDN fetchDN()
         {
             using(SqlConnection con = new SqlConnection(helper.ConnectString()))
@@ -76,37 +80,7 @@ namespace QL_TRO.dataAccess
                 return dnList;
             }
         }
-        public DienNuoc[] fetchData()
-        {
-            using (SqlConnection sql = new SqlConnection(helper.ConnectString()))
-            {
-             
-                if (sql.State == System.Data.ConnectionState.Closed) sql.Open();
-                SqlCommand cmd = new SqlCommand(tongTien, sql);
-                int n = Convert.ToInt32(cmd.ExecuteScalar());
-                SqlDataReader rd = cmd.ExecuteReader();
-                DienNuoc[] dn = new DienNuoc[n];
-                int i = 0;
-                if (rd.HasRows)
-                {
-
-                    while (rd.Read())
-                    {
-                        dn[i].MaPhong = rd.GetInt32(1);
-                        dn[i].SoDienCu = rd.GetInt32(2);
-                        dn[i].SoDienMoi = rd.GetInt32(3);
-                        dn[i].SoDienDUng = rd.GetInt32(4);
-                        dn[i].SoNuocCu = rd.GetInt32(5);
-                        dn[i].SoNuocMoi = rd.GetInt32(6);
-                        dn[i].SoNuocDUng = rd.GetInt32(7);
-                        i++;
-                    }
-                  
-                }
-                return dn;
-            }
-        }
-
+       
         
     
 
