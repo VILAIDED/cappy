@@ -32,12 +32,14 @@ namespace QL_TRO.model
     }
     public class TestDN
     {
-        public Node Head;
+        public   Node Head;
 
         public TestDN()
         {
             Head = null;
         }
+
+        // test
         public void printList()
         {
             Node show = Head;

@@ -52,7 +52,8 @@ namespace QL_TRO.dataAccess
 
         static string testDN = "select * from DIEN_NUOC";
 
-
+        static string phongTrong = "something chưa ghi";
+        static string phongQuery = "";
 
         // gọi dữ liệu từ CSDL vào linkedlist
         public static TestDN fetchDN()
@@ -80,7 +81,75 @@ namespace QL_TRO.dataAccess
                 return dnList;
             }
         }
+        public static Phong getRoom()
+        {
+            using (SqlConnection con = new SqlConnection(helper.ConnectString()))
+            {
+                if (con.State == ConnectionState.Closed) con.Open();
+                SqlCommand cmd = new SqlCommand(phongQuery, con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                Phong phong = new Phong();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        phong.maPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG"));
+                        phong.loaiPhong = rd.GetString(rd.GetOrdinal("Loai_Phong"));
+                        phong.viTri = rd.GetString(rd.GetOrdinal("Vi_Tri"));
+                        phong.soNgDk = rd.GetInt32(rd.GetOrdinal("So_Ng_Dk"));
+                        phong.slNgTD = rd.GetInt32(rd.GetOrdinal("Sl_Ng_TD"));
+                        phong.giaThue = rd.GetInt32(rd.GetOrdinal("Gia_Thue"));
+                    }
+                }
+                return phong;
+            }
+        }
        
+        public static PhongList getRoomAvailable()
+        {
+            using (SqlConnection con = new SqlConnection(helper.ConnectString()))
+            {
+                if (con.State == ConnectionState.Closed) con.Open();
+                SqlCommand cmd = new SqlCommand(phongTrong, con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                PhongList phongList = new PhongList();
+
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        int MaPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG"));
+                        string loaiPhong = rd.GetString(rd.GetOrdinal("Loai_Phong"));
+                        string viTri = rd.GetString(rd.GetOrdinal("Vi_Tri"));
+                        int soNgDk = rd.GetInt32(rd.GetOrdinal("So_Ng_Dk"));
+                        int slNgTD = rd.GetInt32(rd.GetOrdinal("Sl_Ng_TD"));
+                        int giaThue = rd.GetInt32(rd.GetOrdinal("Gia_Thue"));
+                        phongList.add(MaPhong, loaiPhong, viTri, soNgDk, slNgTD, giaThue);
+                    }
+                }
+                return phongList;
+            }
+        }
+        public static bool insertCustomer(KhachThue khach)
+        {
+            bool check = false;
+            string query = "";
+            using(SqlConnection con = new SqlConnection(helper.ConnectString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add("@Hoten", khach.ten);
+               int result = cmd.ExecuteNonQuery();
+                if(result > 0)
+                {
+                    check = true;
+                }
+                else
+                {
+                    check = false;
+                }
+                return check;
+            }
+        }
         
     
 
