@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 using QL_TRO.dataAccess;
+using QL_TRO.model;
+
 
 namespace QL_TRO
 {
@@ -30,6 +32,28 @@ namespace QL_TRO
                 MessageBox.Show("Connected");
             }
            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            TestDN test = Service.fetchDN();
+            Node show = test.Head;
+           
+            while(show != null)
+            {
+                ListViewItem lvItem = new ListViewItem(show.MaPhong.ToString());
+                lvItem.SubItems.Add(show.MaPhong.ToString());
+                lvItem.SubItems.Add(show.SoDien.ToString());
+                lvItem.SubItems.Add(show.SoNuoc.ToString());
+                lvItem.SubItems.Add(show.thangDoc.ToString());
+                listView1.Items.Add(lvItem);
+                show = show.next;
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using QL_TRO.model;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace QL_TRO.dataAccess
 {
@@ -46,6 +49,65 @@ namespace QL_TRO.dataAccess
                          +  "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" 
                          + "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC"
                          + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
+
+        static string testDN = "select * from DIEN_NUOC";
+        public static TestDN fetchDN()
+        {
+            using(SqlConnection con = new SqlConnection(helper.ConnectString()))
+            {
+
+                if (con.State == ConnectionState.Closed) con.Open();
+                SqlCommand cmd = new SqlCommand(testDN, con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                TestDN dnList = new TestDN();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        int MaDienNuoc = rd.GetInt32(rd.GetOrdinal("MA_DIEN_NUOC"));
+                        int MaPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG"));
+                  
+                        int SoNuoc = rd.GetInt32(rd.GetOrdinal("SO_NUOC"));
+                        int Sodien = rd.GetInt32(rd.GetOrdinal("SO_DIEN"));
+                        string thangDoc = rd.GetValue(rd.GetOrdinal("THANG_DOC")).ToString();
+                        dnList.addList(MaDienNuoc, MaPhong, Sodien, SoNuoc, thangDoc);
+                    }
+                }
+                return dnList;
+            }
+        }
+        public DienNuoc[] fetchData()
+        {
+            using (SqlConnection sql = new SqlConnection(helper.ConnectString()))
+            {
+             
+                if (sql.State == System.Data.ConnectionState.Closed) sql.Open();
+                SqlCommand cmd = new SqlCommand(tongTien, sql);
+                int n = Convert.ToInt32(cmd.ExecuteScalar());
+                SqlDataReader rd = cmd.ExecuteReader();
+                DienNuoc[] dn = new DienNuoc[n];
+                int i = 0;
+                if (rd.HasRows)
+                {
+
+                    while (rd.Read())
+                    {
+                        dn[i].MaPhong = rd.GetInt32(1);
+                        dn[i].SoDienCu = rd.GetInt32(2);
+                        dn[i].SoDienMoi = rd.GetInt32(3);
+                        dn[i].SoDienDUng = rd.GetInt32(4);
+                        dn[i].SoNuocCu = rd.GetInt32(5);
+                        dn[i].SoNuocMoi = rd.GetInt32(6);
+                        dn[i].SoNuocDUng = rd.GetInt32(7);
+                        i++;
+                    }
+                  
+                }
+                return dn;
+            }
+        }
+
+        
     
 
     }
