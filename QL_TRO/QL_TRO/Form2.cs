@@ -76,8 +76,10 @@ namespace QL_TRO
                 return false;
             }
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+     
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+
             if (isANonButtonCell(e))
             {
                 var item = dataGridView1.Rows[e.RowIndex].Cells[0].Value; // index was out of range
@@ -85,13 +87,10 @@ namespace QL_TRO
                 {
                     string maPhong = item.ToString();
 
-                    var newForm = new Form1(maPhong,this);
+                    var newForm = new Form1(maPhong, this);
                     newForm.Show(this);
                 }
             }
-         
-         
-            // MessageBox.Show(item.ToString());
         }
     }
 }

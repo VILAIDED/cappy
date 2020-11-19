@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.khachThue_btn = new System.Windows.Forms.Button();
             this.panel3menu = new System.Windows.Forms.Panel();
+            this.tb_btn = new System.Windows.Forms.Button();
+            this.ktraPhong = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.booking_btn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.titleFrame = new System.Windows.Forms.Label();
             this.panelFrame = new System.Windows.Forms.Panel();
-            this.ktraPhong = new System.Windows.Forms.Button();
-            this.tb_btn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.khachThue_btn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3menu.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,6 +60,38 @@
             this.panel1.Size = new System.Drawing.Size(200, 953);
             this.panel1.TabIndex = 0;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button3.Location = new System.Drawing.Point(0, 350);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(200, 45);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Thanh tiền";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // khachThue_btn
+            // 
+            this.khachThue_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.khachThue_btn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.khachThue_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.khachThue_btn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.khachThue_btn.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.khachThue_btn.Location = new System.Drawing.Point(0, 305);
+            this.khachThue_btn.Name = "khachThue_btn";
+            this.khachThue_btn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.khachThue_btn.Size = new System.Drawing.Size(200, 45);
+            this.khachThue_btn.TabIndex = 3;
+            this.khachThue_btn.Text = "Khách trả phòng";
+            this.khachThue_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.khachThue_btn.UseVisualStyleBackColor = false;
+            // 
             // panel3menu
             // 
             this.panel3menu.Controls.Add(this.tb_btn);
@@ -71,6 +103,38 @@
             this.panel3menu.Name = "panel3menu";
             this.panel3menu.Size = new System.Drawing.Size(200, 160);
             this.panel3menu.TabIndex = 2;
+            // 
+            // tb_btn
+            // 
+            this.tb_btn.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.tb_btn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tb_btn.FlatAppearance.BorderSize = 0;
+            this.tb_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tb_btn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_btn.Location = new System.Drawing.Point(0, 120);
+            this.tb_btn.Name = "tb_btn";
+            this.tb_btn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.tb_btn.Size = new System.Drawing.Size(200, 30);
+            this.tb_btn.TabIndex = 3;
+            this.tb_btn.Text = "Thiết bị phòng";
+            this.tb_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tb_btn.UseVisualStyleBackColor = false;
+            // 
+            // ktraPhong
+            // 
+            this.ktraPhong.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ktraPhong.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ktraPhong.FlatAppearance.BorderSize = 0;
+            this.ktraPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ktraPhong.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ktraPhong.Location = new System.Drawing.Point(0, 80);
+            this.ktraPhong.Name = "ktraPhong";
+            this.ktraPhong.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.ktraPhong.Size = new System.Drawing.Size(200, 40);
+            this.ktraPhong.TabIndex = 2;
+            this.ktraPhong.Text = "Kiểm tra phòng";
+            this.ktraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ktraPhong.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -125,6 +189,18 @@
             this.booking_btn.UseVisualStyleBackColor = false;
             this.booking_btn.Click += new System.EventHandler(this.booking_btn_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(186)))));
+            this.panel2.BackgroundImage = global::QL_TRO.Properties.Resources.baseline_home_black_48dp;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 0;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(186)))));
@@ -157,82 +233,6 @@
             this.panelFrame.Name = "panelFrame";
             this.panelFrame.Size = new System.Drawing.Size(1355, 913);
             this.panelFrame.TabIndex = 2;
-            // 
-            // ktraPhong
-            // 
-            this.ktraPhong.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ktraPhong.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ktraPhong.FlatAppearance.BorderSize = 0;
-            this.ktraPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ktraPhong.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ktraPhong.Location = new System.Drawing.Point(0, 80);
-            this.ktraPhong.Name = "ktraPhong";
-            this.ktraPhong.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.ktraPhong.Size = new System.Drawing.Size(200, 40);
-            this.ktraPhong.TabIndex = 2;
-            this.ktraPhong.Text = "Kiểm tra phòng";
-            this.ktraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ktraPhong.UseVisualStyleBackColor = false;
-            // 
-            // tb_btn
-            // 
-            this.tb_btn.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.tb_btn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tb_btn.FlatAppearance.BorderSize = 0;
-            this.tb_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tb_btn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_btn.Location = new System.Drawing.Point(0, 120);
-            this.tb_btn.Name = "tb_btn";
-            this.tb_btn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.tb_btn.Size = new System.Drawing.Size(200, 30);
-            this.tb_btn.TabIndex = 3;
-            this.tb_btn.Text = "Thiết bị phòng";
-            this.tb_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tb_btn.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button3.Location = new System.Drawing.Point(0, 350);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(200, 45);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Thanh tiền";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // khachThue_btn
-            // 
-            this.khachThue_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.khachThue_btn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.khachThue_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.khachThue_btn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.khachThue_btn.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.khachThue_btn.Location = new System.Drawing.Point(0, 305);
-            this.khachThue_btn.Name = "khachThue_btn";
-            this.khachThue_btn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.khachThue_btn.Size = new System.Drawing.Size(200, 45);
-            this.khachThue_btn.TabIndex = 3;
-            this.khachThue_btn.Text = "Khách trả phòng";
-            this.khachThue_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.khachThue_btn.UseVisualStyleBackColor = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(186)))));
-            this.panel2.BackgroundImage = global::QL_TRO.Properties.Resources.baseline_home_black_48dp;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 0;
             // 
             // Main
             // 
