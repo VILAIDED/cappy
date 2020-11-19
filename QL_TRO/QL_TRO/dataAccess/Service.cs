@@ -58,48 +58,23 @@ namespace QL_TRO.dataAccess
        
        
 
-        // gọi dữ liệu từ CSDL vào linkedlist
-        public static TestDN fetchDN()
-        {
-            using(SqlConnection con = new SqlConnection(helper.ConnectString()))
-            {
-
-                if (con.State == ConnectionState.Closed) con.Open();
-                SqlCommand cmd = new SqlCommand(testDN, con);
-                SqlDataReader rd = cmd.ExecuteReader();
-                TestDN dnList = new TestDN();
-                if (rd.HasRows)
-                {
-                    while (rd.Read())
-                    {
-                        int MaDienNuoc = rd.GetInt32(rd.GetOrdinal("MA_DIEN_NUOC"));
-                        int MaPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG"));
-                  
-                        int SoNuoc = rd.GetInt32(rd.GetOrdinal("SO_NUOC"));
-                        int Sodien = rd.GetInt32(rd.GetOrdinal("SO_DIEN"));
-                        string thangDoc = rd.GetValue(rd.GetOrdinal("THANG_DOC")).ToString();
-                        dnList.addList(MaDienNuoc, MaPhong, Sodien, SoNuoc, thangDoc);
-                    }
-                }
-                return dnList;
-            }
-        }
+     
         public static Phong getRoom(string maPhong)
         {
             string phongQuery = "select Ma_Phong, loai_phong,vi_tri,So_Ng_Dk,SL_Ng_TD,Gia_Thue from (select p.Ma_Phong Ma_Phong,l.ten_loai loai_phong,p.vi_tri vi_tri,(select count(Ma_Khach)" +
                   $"from KHACH_THUE k where k.MA_PHONG = p.Ma_Phong) as So_Ng_Dk,l.SL_NGUOI_TOI_DA SL_NG_TD, l.GIA_THUE Gia_Thue from PHONG p,LOAI_PHONG l where p.MA_LOAI = l.MA_LOAI AND P.MA_PHONG = {maPhong} )"
                   + "as phongNew where So_Ng_Dk<SL_Ng_TD";
-            using (SqlConnection con = new SqlConnection(helper.ConnectString()))
+            using (SqlConnection con = new SqlConnection(helper.ConnectString())) // connect CSDL
             {
-                if (con.State == ConnectionState.Closed) con.Open();
-                SqlCommand cmd = new SqlCommand(phongQuery, con);
-                SqlDataReader rd = cmd.ExecuteReader();
+                if (con.State == ConnectionState.Closed) con.Open(); // nếu connnection đang đóng thì bật lại
+                SqlCommand cmd = new SqlCommand(phongQuery, con); // lưu connection và query vào để Execute
+                SqlDataReader rd = cmd.ExecuteReader(); // Execute 
                 Phong phong = new Phong();
-                if (rd.HasRows)
+                if (rd.HasRows) // nếu có hạng thì sẽ thực hiện gọi dữ liệu vào list
                 {
-                    while (rd.Read())
+                    while (rd.Read()) // cho đọc từng hàng hết hàng thì dừng
                     {
-                        phong.maPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG"));
+                        phong.maPhong = rd.GetInt32(rd.GetOrdinal("MA_PHONG")); // gọi dữ theo tên cột vào mỗi thành viên của class model
                         phong.loaiPhong = rd.GetString(rd.GetOrdinal("Loai_Phong"));
                         phong.viTri = rd.GetString(rd.GetOrdinal("Vi_Tri"));
                         phong.soNgDk = rd.GetInt32(rd.GetOrdinal("So_Ng_Dk"));
@@ -110,7 +85,8 @@ namespace QL_TRO.dataAccess
                 return phong;
             }
         }
-       
+
+        // fetch list những phòng trống
         public static PhongList getRoomAvailable()
         {
             using (SqlConnection con = new SqlConnection(helper.ConnectString()))
@@ -130,12 +106,14 @@ namespace QL_TRO.dataAccess
                         int soNgDk = rd.GetInt32(rd.GetOrdinal("So_Ng_Dk"));
                         int slNgTD = rd.GetInt32(rd.GetOrdinal("Sl_Ng_TD"));
                         int giaThue = rd.GetInt32(rd.GetOrdinal("Gia_Thue"));
-                        phongList.add(MaPhong, loaiPhong, viTri, soNgDk, slNgTD, giaThue);
+                        phongList.add(MaPhong, loaiPhong, viTri, soNgDk, slNgTD, giaThue); // đưa vào list từng hàng
                     }
                 }
                 return phongList;
             }
         }
+        
+        // fetch dữ liệu của khách trong phòng nào đó # có nhập maPhong vào
         public static KhachThueList getCustomerRoom(string maPhong)
         {
             using (SqlConnection con = new SqlConnection(helper.ConnectString()))
@@ -144,8 +122,11 @@ namespace QL_TRO.dataAccess
                 string khachPhong = "SELECT Ma_Khach,Ho_Ten,Ngay_Sinh,So_CMND,Gioi_Tinh,Sdt,Que_Quan,Ngay_Vao FROM" +
                      "(SELECT kh.MA_KHACH Ma_Khach,kh.HO_TEN Ho_Ten, kh.NGAY_SINH Ngay_Sinh, kh.CMND So_CMND, kh.GIOI_TINH Gioi_Tinh, kh.SDT Sdt, kh.QUE_QUAN Que_Quan," +
                      "th.NGAY_VAO_O Ngay_Vao FROM KHACH_THUE kh, THUE_TRA_PHONG th where kh.MA_PHONG = @maPhong AND  kh.MA_KHACH = th.MA_KHACH) as KhachPhong";
+                     // @maPhong là nhận giá trị từ bên ngoài #nhận từ cmd.parameter(đc gọi ở dưới đây)
                 SqlCommand cmd = new SqlCommand(khachPhong, con);
-                cmd.Parameters.AddWithValue("@maPhong", maPhong);
+                cmd.Parameters.AddWithValue("@maPhong", maPhong); // nhập giá trị vào @maPhong rồi mới Execute
+                // nhập giá trị vào kiểu này cách basic để cho CSDL của mình an toàn hơn # cách mà ko an toàn thì mình để comment ở dưới hàm này
+                // 
                 SqlDataReader rd = cmd.ExecuteReader();
                 KhachThueList khachList = new KhachThueList();
                 if (rd.HasRows)
@@ -168,6 +149,43 @@ namespace QL_TRO.dataAccess
                      
                      }
         }
+
+        /*/
+        public static KhachThueList getCustomerRoom1(string maPhong)
+        {
+            using (SqlConnection con = new SqlConnection(helper.ConnectString()))
+            {
+                if (con.State == ConnectionState.Closed) con.Open();
+                string khachPhong = "SELECT Ma_Khach,Ho_Ten,Ngay_Sinh,So_CMND,Gioi_Tinh,Sdt,Que_Quan,Ngay_Vao FROM" +
+                     "(SELECT kh.MA_KHACH Ma_Khach,kh.HO_TEN Ho_Ten, kh.NGAY_SINH Ngay_Sinh, kh.CMND So_CMND, kh.GIOI_TINH Gioi_Tinh, kh.SDT Sdt, kh.QUE_QUAN Que_Quan," +
+                     $"th.NGAY_VAO_O Ngay_Vao FROM KHACH_THUE kh, THUE_TRA_PHONG th where kh.MA_PHONG = {maPhong} AND  kh.MA_KHACH = th.MA_KHACH) as KhachPhong";
+                SqlCommand cmd = new SqlCommand(khachPhong, con);
+            
+                SqlDataReader rd = cmd.ExecuteReader();
+                KhachThueList khachList = new KhachThueList();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        int maKhach = rd.GetInt32(rd.GetOrdinal("Ma_Khach"));
+                        string hoTen = rd.GetString(rd.GetOrdinal("Ho_Ten"));
+                        string ngaySinh = rd.GetValue(rd.GetOrdinal("Ngay_Sinh")).ToString();
+                        string soCMND = rd.GetString(rd.GetOrdinal("So_CMND"));
+                        string gioiTinh = rd.GetString(rd.GetOrdinal("Gioi_Tinh"));
+                        string sdt = rd.GetString(rd.GetOrdinal("Sdt"));
+                        string quenQuan = rd.GetString(rd.GetOrdinal("Que_Quan"));
+                        string ngayVao = rd.GetValue(rd.GetOrdinal("Ngay_Vao")).ToString();
+                        khachList.add(maKhach, hoTen, gioiTinh, ngaySinh, soCMND, quenQuan, ngayVao);
+
+                    }
+                }
+                return khachList;
+
+            }
+        }
+        */
+
+        // ĐK dữ liệu khách vào phòng # return true nếu ĐK thành công
         public static bool insertCustomer(KhachThue khach)
         {
             bool check = false;

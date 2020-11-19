@@ -192,7 +192,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(186)))));
-            this.panel2.BackgroundImage = global::QL_TRO.Properties.Resources.baseline_home_black_48dp;
+      
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;

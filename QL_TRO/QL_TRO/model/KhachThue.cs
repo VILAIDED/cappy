@@ -33,7 +33,6 @@ namespace QL_TRO.model
             this.ngaySinh = ngaySinh;
             this.soCMND = soCMND;
             this.queQuan = queQuan;
-   
             this.ngayVao = ngayVao;
 
         }

@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="model\KhachThue.cs" />
     <Compile Include="model\Phong.cs" />
-    <Compile Include="model\TestDN.cs" />
     <Compile Include="model\TienPhong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,9 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\baseline_home_black_48dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\book1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
