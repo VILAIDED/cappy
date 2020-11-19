@@ -51,7 +51,7 @@ namespace QL_TRO.model
             }
             else
             {
-                while(cur != null)
+                while(cur.next != null)
                 {
                     cur = cur.next;
                 }

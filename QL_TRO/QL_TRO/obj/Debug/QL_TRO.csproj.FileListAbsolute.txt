@@ -19,3 +19,6 @@ C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\bin\Debug\QL_TRO.exe.config
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\bin\Debug\QL_TRO.exe
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\bin\Debug\QL_TRO.pdb
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Form2.resources
+C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Main.resources
+C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\bin\Debug\MaterialSkin.dll
+C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.csproj.CopyComplete

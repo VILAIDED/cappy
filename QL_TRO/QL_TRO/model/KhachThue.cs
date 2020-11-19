@@ -9,23 +9,44 @@ namespace QL_TRO.model
     public class KhachThue
     {
         public int maKhach;
+        public int maPhong;
         public string ten;
+        public string gioiTinh;
         public string ngaySinh;
         public string soCMND;
         public string sdt;
         public string queQuan;
-        public string ngheNghiep;
+        
         public string ngayVao;
         public KhachThue next = null;
 
-        public KhachThue(int maKhach,string ten,string ngaySinh,string soCMND,string queQuan,string ngheNghiep,string ngayVao)
+        public KhachThue()
+        {
+
+        }
+        public KhachThue(int maKhach,int maPhong,string ten,string gioiTinh,string ngaySinh,string soCMND,string queQuan,string ngayVao)
         {
             this.maKhach = maKhach;
+            this.maPhong = maPhong;
             this.ten = ten;
+            this.gioiTinh = gioiTinh;
             this.ngaySinh = ngaySinh;
             this.soCMND = soCMND;
             this.queQuan = queQuan;
-            this.ngheNghiep = ngheNghiep;
+   
+            this.ngayVao = ngayVao;
+
+        }
+        public KhachThue(int maKhach,string ten, string gioiTinh, string ngaySinh, string soCMND, string queQuan, string ngayVao)
+        {
+            this.maKhach = maKhach;
+       
+            this.ten = ten;
+            this.gioiTinh = gioiTinh;
+            this.ngaySinh = ngaySinh;
+            this.soCMND = soCMND;
+            this.queQuan = queQuan;
+
             this.ngayVao = ngayVao;
 
         }
@@ -39,9 +60,9 @@ namespace QL_TRO.model
             Head = null;
         }
 
-        public void add(int maKhach, string ten, string ngaySinh, string soCMND, string queQuan, string ngheNghiep, string ngayVao)
+        public void add(int maKhach, string ten, string gioiTinh, string ngaySinh, string soCMND, string queQuan, string ngayVao)
         {
-            KhachThue add = new KhachThue(maKhach, ten, ngaySinh, soCMND, queQuan, ngheNghiep, ngayVao);
+            KhachThue add = new KhachThue(maKhach, ten,gioiTinh,ngaySinh, soCMND, queQuan, ngayVao);
             KhachThue cur = Head;
             if(cur == null)
             {
@@ -49,7 +70,7 @@ namespace QL_TRO.model
             }
             else
             {
-                while(cur != null)
+                while(cur.next != null)
                 {
                     cur = cur.next;
                 }
