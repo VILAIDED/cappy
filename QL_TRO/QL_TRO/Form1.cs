@@ -19,7 +19,6 @@ namespace QL_TRO
     {
         private Form2 frm;
         private string maPhong;
-        SqlConnection con = new SqlConnection(helper.ConnectString());
         public void fetchList()
         {
             KhachThueList khach = Service.getCustomerRoom(maPhong);
@@ -29,12 +28,19 @@ namespace QL_TRO
             {
                 ListViewItem lvItem = new ListViewItem(show.maKhach.ToString());
                 lvItem.SubItems.Add(show.ten);
-                lvItem.SubItems.Add(show.ngaySinh);
-                lvItem.SubItems.Add(show.soCMND);
                 lvItem.SubItems.Add(show.gioiTinh);
+                lvItem.SubItems.Add(show.ngaySinh);
+                 
+                lvItem.SubItems.Add(show.soCMND);
                 lvItem.SubItems.Add(show.sdt);
                 lvItem.SubItems.Add(show.queQuan);
+             
+               
+                lvItem.SubItems.Add(show.ngheNghiep);
                 lvItem.SubItems.Add(show.ngayVao);
+
+
+
                 listView1.Items.Add(lvItem);
                 show = show.next;
             }
@@ -47,15 +53,7 @@ namespace QL_TRO
             this.maPhong = maPhong;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            con.Open();
-            if(con.State == ConnectionState.Open)
-            {
-                MessageBox.Show("Connected");
-            }
-           
-        }
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -65,8 +63,6 @@ namespace QL_TRO
             ngaySinhText.Format = DateTimePickerFormat.Custom;
             ngayVaoText.CustomFormat = "yyyy/MM/dd";
             ngayVaoText.Format = DateTimePickerFormat.Custom;
-            
-            
             gioiTinh.Items.Add("Nam");
             gioiTinh.Items.Add("Nữ");
             gioiTinh.SelectedIndex = 0;
@@ -122,6 +118,7 @@ namespace QL_TRO
             khach.sdt = sdtText.Text;
             khach.ngaySinh = ngaySinhText.Text;
             khach.ngayVao = ngayVaoText.Text;
+            khach.ngheNghiep = ngheNghiepText.Text;
             khach.gioiTinh = gioiTinh.SelectedItem.ToString();
            // khach.ngheNghiep = ngheNghiepText.Text;
     

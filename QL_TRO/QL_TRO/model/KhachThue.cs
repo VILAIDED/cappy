@@ -16,7 +16,7 @@ namespace QL_TRO.model
         public string soCMND;
         public string sdt;
         public string queQuan;
-        
+        public string ngheNghiep;
         public string ngayVao;
         public KhachThue next = null;
 
@@ -24,28 +24,30 @@ namespace QL_TRO.model
         {
 
         }
-        public KhachThue(int maKhach,int maPhong,string ten,string gioiTinh,string ngaySinh,string soCMND,string queQuan,string ngayVao)
+        public KhachThue(int maKhach,int maPhong,string ten,string gioiTinh,string ngaySinh,string soCMND,string sdt,string queQuan,string ngayVao)
         {
             this.maKhach = maKhach;
             this.maPhong = maPhong;
             this.ten = ten;
+            this.sdt = sdt;
             this.gioiTinh = gioiTinh;
             this.ngaySinh = ngaySinh;
             this.soCMND = soCMND;
             this.queQuan = queQuan;
+            
             this.ngayVao = ngayVao;
 
         }
-        public KhachThue(int maKhach,string ten, string gioiTinh, string ngaySinh, string soCMND, string queQuan, string ngayVao)
+        public KhachThue(int maKhach,string ten, string gioiTinh, string ngaySinh, string soCMND, string sdt,string queQuan,string ngheNghiep, string ngayVao)
         {
             this.maKhach = maKhach;
-       
+            this.sdt = sdt;
             this.ten = ten;
             this.gioiTinh = gioiTinh;
             this.ngaySinh = ngaySinh;
             this.soCMND = soCMND;
             this.queQuan = queQuan;
-
+            this.ngheNghiep = ngheNghiep;
             this.ngayVao = ngayVao;
 
         }
@@ -59,9 +61,9 @@ namespace QL_TRO.model
             Head = null;
         }
 
-        public void add(int maKhach, string ten, string gioiTinh, string ngaySinh, string soCMND, string queQuan, string ngayVao)
+        public void add(int maKhach, string ten, string gioiTinh, string ngaySinh, string soCMND,string sdt,string queQuan,string ngheNghiep ,string ngayVao)
         {
-            KhachThue add = new KhachThue(maKhach, ten,gioiTinh,ngaySinh, soCMND, queQuan, ngayVao);
+            KhachThue add = new KhachThue(maKhach, ten,gioiTinh,ngaySinh, soCMND,sdt,queQuan,ngheNghiep, ngayVao);
             KhachThue cur = Head;
             if(cur == null)
             {

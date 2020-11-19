@@ -119,9 +119,9 @@ namespace QL_TRO.dataAccess
             using (SqlConnection con = new SqlConnection(helper.ConnectString()))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                string khachPhong = "SELECT Ma_Khach,Ho_Ten,Ngay_Sinh,So_CMND,Gioi_Tinh,Sdt,Que_Quan,Ngay_Vao FROM" +
+                string khachPhong = "SELECT Ma_Khach,Ho_Ten,Ngay_Sinh,So_CMND,Gioi_Tinh,Sdt,Que_Quan,Nghe_Nghiep,Ngay_Vao FROM" +
                      "(SELECT kh.MA_KHACH Ma_Khach,kh.HO_TEN Ho_Ten, kh.NGAY_SINH Ngay_Sinh, kh.CMND So_CMND, kh.GIOI_TINH Gioi_Tinh, kh.SDT Sdt, kh.QUE_QUAN Que_Quan," +
-                     "th.NGAY_VAO_O Ngay_Vao FROM KHACH_THUE kh, THUE_TRA_PHONG th where kh.MA_PHONG = @maPhong AND  kh.MA_KHACH = th.MA_KHACH) as KhachPhong";
+                     "kh.NGHE_NGHIEP Nghe_Nghiep,th.NGAY_VAO_O Ngay_Vao FROM KHACH_THUE kh, THUE_TRA_PHONG th where kh.MA_PHONG = @maPhong AND  kh.MA_KHACH = th.MA_KHACH) as KhachPhong";
                      // @maPhong là nhận giá trị từ bên ngoài #nhận từ cmd.parameter(đc gọi ở dưới đây)
                 SqlCommand cmd = new SqlCommand(khachPhong, con);
                 cmd.Parameters.AddWithValue("@maPhong", maPhong); // nhập giá trị vào @maPhong rồi mới Execute
@@ -139,9 +139,10 @@ namespace QL_TRO.dataAccess
                         string soCMND = rd.GetString(rd.GetOrdinal("So_CMND"));
                         string gioiTinh = rd.GetString(rd.GetOrdinal("Gioi_Tinh"));
                         string sdt = rd.GetString(rd.GetOrdinal("Sdt"));
+                        string ngheNghiep = rd.GetString(rd.GetOrdinal("Nghe_Nghiep"));
                         string quenQuan = rd.GetString(rd.GetOrdinal("Que_Quan"));
                         string ngayVao = rd.GetValue(rd.GetOrdinal("Ngay_Vao")).ToString();
-                        khachList.add(maKhach, hoTen, gioiTinh, ngaySinh, soCMND, quenQuan, ngayVao);
+                        khachList.add(maKhach, hoTen, gioiTinh, ngaySinh, soCMND,sdt, quenQuan,ngheNghiep, ngayVao);
                         
                     }
                 }
@@ -193,7 +194,7 @@ namespace QL_TRO.dataAccess
             using(SqlConnection con = new SqlConnection(helper.ConnectString()))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                string query = "INSERT INTO KHACH_THUE VALUES(@maPhong,@hoten,@CMND,@ngaySinh,@gioiTinh,@queQuan,@sdt)";
+                string query = "INSERT INTO KHACH_THUE VALUES(@maPhong,@hoten,@CMND,@ngaySinh,@gioiTinh,@queQuan,@sdt,@ngheNghiep)";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue ("@hoten", khach.ten);
                 cmd.Parameters.AddWithValue("@maPhong", khach.maPhong);
@@ -201,6 +202,7 @@ namespace QL_TRO.dataAccess
                 cmd.Parameters.AddWithValue("@ngaySinh", khach.ngaySinh);
                 cmd.Parameters.AddWithValue("@gioiTinh", khach.gioiTinh);
                 cmd.Parameters.AddWithValue("@queQuan", khach.queQuan);
+                cmd.Parameters.AddWithValue("@ngheNghiep", khach.ngheNghiep);
                 cmd.Parameters.AddWithValue("@sdt", khach.sdt);
                 SqlDataReader rd = cmd.ExecuteReader();
                 int maKhach = 0;
