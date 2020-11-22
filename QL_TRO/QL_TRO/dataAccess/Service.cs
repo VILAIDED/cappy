@@ -14,42 +14,6 @@ namespace QL_TRO.dataAccess
                                  "THEN HOP_DONG_THUE_PHONG.TRANG_THAI ELSE 'available'  END as TRANG_THAI"
                                  + "FROM PHONG p FULL OUTER JOIN HOP_DONG_THUE_PHONG ON p.MA_PHONG = HOP_DONG_THUE_PHONG.MA_PHONG) as PhongTrong where PhongTrong.TRANG_THAI = 'DANG THUE'";/*/
 
-
-        // show phòng nào trống phòng nào đang thuê
-        string statusRoom = "select  MA_PHONG, case when Trang_thai > 0 then 'dang thue' else 'available' end as Trang_thai from (SELECT distinct p.Ma_PHONG MA_PHONG,(select count(MA_PHONG) from KHACH_THUE where KHACH_THUE.MA_PHONG = p.MA_PHONG ) as Trang_thai"
-                            + "FROM PHONG p ) as Test";
-
-
-        // hiện lên có bao nhiêu người ở trong  mỗi phòng
-        string songuoitrongRoom = "select  MA_PHONG,Trang_thai from(SELECT distinct p.Ma_PHONG MA_PHONG, (select count(MA_PHONG) from KHACH_THUE where KHACH_THUE.MA_PHONG = p.MA_PHONG) as Trang_thai"
-                                  +"FROM PHONG p) as Test";
-
-        // show số điện nước dùng trong tháng 
-        string dienNuoc = "SELECT PHONG_ID ,SO_DIEN_CU,SO_DIEN_MOI,SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_MOI" +
-                          "FROM(SELECT p.MA_PHONG PHONG_ID, dn.SO_DIEN SO_DIEN_CU, dn.SO_NUOC SO_NUOC_CU " +
-                          "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" +
-                           "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC" +
-                          " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0))" +
-                          "as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG;";
-
-
-        // số điện số nước dùng , tiền điện tiền nước, tổng tiền
-        string tienDN = "SELECT PHONG_ID ,SO_DIEN_CU,SO_DIEN_MOI,SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,(SO_DIEN_MOI-SO_DIEN_CU) * 2000 as TIEN_DIEN,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_DUNG,"
-                         + "(SO_NUOC_MOI - SO_NUOC_CU) * 5000 as TIEN_NUOC,((SO_NUOC_MOI - SO_NUOC_CU) * 5000) +((SO_DIEN_MOI-SO_DIEN_CU) * 2000) as TONG_TIEN" 
-                         + "FROM(SELECT p.MA_PHONG PHONG_ID, dn.SO_DIEN SO_DIEN_CU, dn.SO_NUOC SO_NUOC_CU" 
-                         +  "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" 
-                         + "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC"
-                         + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
-        // số điện số nước,tổng tiền
-        string tongTien = "SELECT PHONG_ID, SO_DIEN_CU, SO_DIEN_MOI, SO_DIEN_MOI - SO_DIEN_CU as SO_DIEN_DUNG,SO_NUOC_CU,SO_NUOC_MOI,SO_NUOC_MOI - SO_NUOC_CU as  SO_NUOC_DUNG,"
-                         + "((SO_NUOC_MOI - SO_NUOC_CU) * 5000) +((SO_DIEN_MOI-SO_DIEN_CU) * 2000) as TONG_TIEN" 
-                         + "FROM(SELECT p.MA_PHONG PHONG_ID, dn.SO_DIEN SO_DIEN_CU, dn.SO_NUOC SO_NUOC_CU" 
-                         +  "FROM PHONG p, DIEN_NUOC dn WHERE p.MA_PHONG = dn.MA_PHONG AND dn.THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()) - 1, 0)) as DN_CU FULL OUTER JOIN" 
-                         + "(SELECT DIEN_NUOC.MA_PHONG as MA_PHONG, DIEN_NUOC.SO_DIEN as SO_DIEN_MOI , DIEN_NUOC.SO_NUOC as SO_NUOC_MOI FROM DIEN_NUOC"
-                         + " WHERE THANG_DOC = DATEADD(MONTH, DATEDIFF(MONTH, 0, GETDATE()), 0)) as DN_MOI ON DN_CU.PHONG_ID = DN_MOI.MA_PHONG";
-
-        static string testDN = "select * from DIEN_NUOC";
-
         static string phongTrong = "select Ma_Phong, loai_phong,vi_tri,So_Ng_Dk,SL_Ng_TD,Gia_Thue from (select p.Ma_Phong Ma_Phong,l.ten_loai loai_phong,p.vi_tri vi_tri,(select count(Ma_Khach)" +
                   "from KHACH_THUE k where k.MA_PHONG = p.Ma_Phong) as So_Ng_Dk,l.SL_NGUOI_TOI_DA SL_NG_TD, l.GIA_THUE Gia_Thue from PHONG p,LOAI_PHONG l where p.MA_LOAI = l.MA_LOAI)"
                   +  "as phongNew where So_Ng_Dk<SL_Ng_TD";
