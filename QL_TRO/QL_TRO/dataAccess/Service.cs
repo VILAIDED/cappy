@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Text;
 using System.Threading.Tasks;
 using QL_TRO.model;
 using System.Data.SqlClient;
 using System.Data;
 
+
+// Yêu anh Nhất
 namespace QL_TRO.dataAccess
 {
     public class Service
