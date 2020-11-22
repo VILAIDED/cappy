@@ -22,3 +22,4 @@ C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Form2.resour
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Main.resources
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\bin\Debug\MaterialSkin.dll
 C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.csproj.CopyComplete
+C:\Users\ASUS\Documents\GitHub\cappy\QL_TRO\QL_TRO\obj\Debug\QL_TRO.Payment.resources

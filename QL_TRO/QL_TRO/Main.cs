@@ -18,8 +18,12 @@ namespace QL_TRO
             hideMenu();
         }
         private Form activeForm = null;
+
+
+        
         private void openForm(Form childForm,string title)
         {
+            // hàm này mình gọi để bật screen sau khi mình bấm menu (button bên menu ấy)
             if(activeForm != null)
             {
                 activeForm.Close();
@@ -76,6 +80,12 @@ namespace QL_TRO
         {
             Form2 form2 = new Form2();
             openForm(form2, "Đặt Phòng");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Payment form = new Payment();
+            openForm(form, "Tính tiền phòng");
         }
     }
 }

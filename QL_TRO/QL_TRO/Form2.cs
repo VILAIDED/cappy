@@ -12,6 +12,7 @@ using QL_TRO.dataAccess;
 
 namespace QL_TRO
 {
+    //
     public partial class Form2 : Form
     {
         public void getRoom()

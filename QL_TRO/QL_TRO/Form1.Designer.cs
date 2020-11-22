@@ -71,7 +71,6 @@ namespace QL_TRO
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.ngayVaoText = new System.Windows.Forms.DateTimePicker();
             this.gioiTinh = new System.Windows.Forms.ComboBox();
             this.ngaySinhText = new System.Windows.Forms.DateTimePicker();
@@ -114,7 +113,7 @@ namespace QL_TRO
             this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Vị trí             :";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+           
             // 
             // maPhongText
             // 
@@ -163,7 +162,7 @@ namespace QL_TRO
             this.label5.Size = new System.Drawing.Size(76, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Số Ng Đk :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+     
             // 
             // label6
             // 
@@ -401,16 +400,6 @@ namespace QL_TRO
             this.label11.TabIndex = 36;
             this.label11.Text = "Giới tính";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(557, 502);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
             // ngayVaoText
             // 
             this.ngayVaoText.Location = new System.Drawing.Point(905, 232);
@@ -445,7 +434,6 @@ namespace QL_TRO
             this.ClientSize = new System.Drawing.Size(1482, 1055);
             this.Controls.Add(this.ngaySinhText);
             this.Controls.Add(this.ngayVaoText);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.gioiTinh);
             this.Controls.Add(this.label14);
@@ -524,7 +512,6 @@ namespace QL_TRO
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker ngayVaoText;
         private System.Windows.Forms.ComboBox gioiTinh;
         private System.Windows.Forms.DateTimePicker ngaySinhText;

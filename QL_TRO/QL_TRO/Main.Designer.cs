@@ -75,6 +75,7 @@
             this.button3.Text = "Thanh tiền";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // khachThue_btn
             // 
@@ -192,7 +193,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(171)))), ((int)(((byte)(186)))));
-      
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -213,21 +213,20 @@
             // 
             // titleFrame
             // 
-            this.titleFrame.AutoSize = true;
-            this.titleFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titleFrame.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleFrame.Location = new System.Drawing.Point(0, 0);
             this.titleFrame.Name = "titleFrame";
-            this.titleFrame.Padding = new System.Windows.Forms.Padding(500, 10, 0, 0);
-            this.titleFrame.Size = new System.Drawing.Size(584, 30);
+            this.titleFrame.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.titleFrame.Size = new System.Drawing.Size(1355, 30);
             this.titleFrame.TabIndex = 0;
             this.titleFrame.Text = "titleFrame";
-            this.titleFrame.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.titleFrame.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelFrame
             // 
             this.panelFrame.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelFrame.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFrame.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.panelFrame.Location = new System.Drawing.Point(200, 40);
             this.panelFrame.Name = "panelFrame";
@@ -248,7 +247,6 @@
             this.panel1.ResumeLayout(false);
             this.panel3menu.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

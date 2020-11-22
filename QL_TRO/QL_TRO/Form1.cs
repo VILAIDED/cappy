@@ -30,17 +30,11 @@ namespace QL_TRO
                 lvItem.SubItems.Add(show.ten);
                 lvItem.SubItems.Add(show.gioiTinh);
                 lvItem.SubItems.Add(show.ngaySinh);
-                 
                 lvItem.SubItems.Add(show.soCMND);
                 lvItem.SubItems.Add(show.sdt);
-                lvItem.SubItems.Add(show.queQuan);
-             
-               
+                lvItem.SubItems.Add(show.queQuan);            
                 lvItem.SubItems.Add(show.ngheNghiep);
                 lvItem.SubItems.Add(show.ngayVao);
-
-
-
                 listView1.Items.Add(lvItem);
                 show = show.next;
             }
@@ -56,9 +50,7 @@ namespace QL_TRO
        
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            
-           
+        { 
             ngaySinhText.CustomFormat = "yyyy/MM/dd";
             ngaySinhText.Format = DateTimePickerFormat.Custom;
             ngayVaoText.CustomFormat = "yyyy/MM/dd";
@@ -78,35 +70,8 @@ namespace QL_TRO
             fetchList();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dk_btn_Click(object sender, EventArgs e)
         {
